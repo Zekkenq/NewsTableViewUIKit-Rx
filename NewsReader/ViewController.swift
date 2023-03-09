@@ -11,9 +11,19 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        view.backgroundColor = .red
+        
+       
+        
     }
-
+    override func viewDidAppear(_ animated: Bool) {
+        let service = NewsService()
+        
+        let viewModel = HeadlinesViewModel(service: service)
+        let headlinesVC = HeadlinesViewController(viewModel: viewModel)
+        headlinesVC.modalPresentationStyle = .fullScreen
+        present(headlinesVC, animated: false)
+    }
 
 }
 
